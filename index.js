@@ -17,7 +17,8 @@ const users = [
 // broken test data for exercise 6
 const brokenUsers = [
   { id: 1, age: 23 },
-  { id: 2, name: "Broken Character" },
+  { id: 2, name: null },
+  {id: 4, name: "Obi-Wan Kenobi", age: 57 },
   { id: 3 },
 ];
 
@@ -60,6 +61,7 @@ function showNames(array, elementId) {
   });
 }
 showNames(users, "function-list");
+
 // 4. Create a function that takes an array and an age threshold parameter. The function should only display characters whose age is below the given number. Render results in the list with id "age-filter-list"
 function showNamesByAge(array, ageLimit, elementId) {
   const list = document.getElementById(elementId);
@@ -72,6 +74,25 @@ function showNamesByAge(array, ageLimit, elementId) {
   });
 }
 showNamesByAge(users, 40, "age-filter-list");
+
 // 5. Add error handling to your functions that will log an error message using console.error() if any object doesn't have a "name" property. Display any error messages in the div with id "error-messages"
 
 // 6. Test your error handling by creating a second array that's intentionally broken (missing name properties) and passing it to your functions. Verify that your error handling works correctly and displays errors in the div with id "broken-array-errors"
+const brokenDiv = document.getElementById("broken-array-errors");
+const brokenList = document.getElementById("broken-array-list");
+
+brokenUsers.forEach(user => {
+  if (!user.name) {
+    const p = document.createElement("p");
+    p.textContent = `Error: Missing name for id ${user.id}`;
+    p.classList.add("error-message"); 
+    brokenDiv.appendChild(p);
+
+    console.error(`Error: Missing name for id ${user.id}`);
+  } else {
+    const li = document.createElement("li");
+    li.textContent = user.name;
+    brokenList.appendChild(li);
+  }
+  
+});
