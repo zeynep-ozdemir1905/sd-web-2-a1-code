@@ -59,6 +59,8 @@ showNamesByAge(users, 40, "age-filter-list");
 const errorDiv = document.getElementById("error-messages");
 const errorList = document.getElementById("error-handling-list");
 
+let hasError = false;
+
 users.forEach(user => {
   if (!user.name) {
     errorList.innerHTML += `
@@ -67,14 +69,19 @@ users.forEach(user => {
       </li>
     `;
     console.error(`Error: Missing name for id ${user.id}`);
+    hasError = true;
   } else {
     errorList.innerHTML += `
       <li>
-        ID ${user.id}: <span class="success">${user.name}</span>
+        ID ${user.id}: ${user.name}
       </li>
     `;
   }
 });
+
+if (!hasError) {
+  errorDiv.innerHTML += `<p class="success">All names found successfully!</p>`;
+}
 
 
 // 6. Test your error handling by creating a second array that's intentionally broken (missing name properties) and passing it to your functions. Verify that your error handling works correctly and displays errors in the div with id "broken-array-errors"
