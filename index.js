@@ -14,14 +14,6 @@ const users = [
   { id: 10, name: "Padmé Amidala", age: 27 },
 ];
 
-// broken test data for exercise 6
-const brokenUsers = [
-  { id: 1, age: 23 },
-  { id: 2, name: null },
-  {id: 4, name: "Obi-Wan Kenobi", age: 57 },
-  { id: 3 },
-];
-
 // 1. Print out the names of each character in the console, then render them in the HTML list with id "names-list"
 const namesList = document.getElementById("names-list");
 users.forEach(user => {
@@ -46,10 +38,6 @@ function showNames(array, elementId) {
   array.forEach(user => {
     if (user.name) {
       list.innerHTML += `<li>${user.name}</li>`;
-    } else {
-      document.getElementById("error-messages").innerHTML +=
-        `<p class="error-message">Error: Missing name for id ${user.id}</p>`;
-      console.error(`Missing name for id ${user.id}`);
     }
   }); 
 }
@@ -73,25 +61,42 @@ const errorList = document.getElementById("error-handling-list");
 
 users.forEach(user => {
   if (!user.name) {
-    errorDiv.innerHTML += `<p class="error-message">Error: Missing name for id ${user.id}</p>`;
+    errorList.innerHTML += `
+      <li>
+        ID ${user.id}: <span class="error-message">(no name)</span>
+      </li>
+    `;
     console.error(`Error: Missing name for id ${user.id}`);
   } else {
-    errorList.innerHTML += `<li>${user.name}</li>`;
+    errorList.innerHTML += `
+      <li>
+        ID ${user.id}: <span class="success">${user.name}</span>
+      </li>
+    `;
   }
 });
-
-errorDiv.innerHTML += `<p class="success">Success: All characters are shown</p>`;
 
 
 // 6. Test your error handling by creating a second array that's intentionally broken (missing name properties) and passing it to your functions. Verify that your error handling works correctly and displays errors in the div with id "broken-array-errors"
 const brokenDiv = document.getElementById("broken-array-errors");
 const brokenList = document.getElementById("broken-array-list");
 
+const brokenUsers = [
+  { id: 1, age: 23 },
+  { id: 2, name: null },
+  { id: 4, name: "Obi-Wan Kenobi", age: 57 },
+  { id: 3 },
+];
+
 brokenUsers.forEach(user => {
-  if (!user.name) {
-    brokenDiv.innerHTML += `<p class="error-message">Error: Missing name for id ${user.id}</p>`;
-    console.error(`Error: Missing name for id ${user.id}`);
-  } else {
-    brokenList.innerHTML += `<li>${user.name}</li>`;
-  }
+  let nameText = user.name ? user.name : "missing name properties"; 
+  let nameClass = user.name ? "success" : "error-message"; 
+
+  brokenList.innerHTML += `
+    <li>
+      ID ${user.id}: <span class="${nameClass}">${nameText}</span>
+    </li>
+  `;
+
+  if (!user.name) console.error(`Error: Missing name for id ${user.id}`);
 });

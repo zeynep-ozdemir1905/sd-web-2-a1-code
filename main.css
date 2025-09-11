@@ -86,10 +86,10 @@ ul {
 }
 
 ul li {
-  background: #dee2e6;
+  background: #f0f4f8;
   margin-bottom: 0.5rem;
   padding: 0.75rem;
-  border-radius: 2px;
+  border-radius: px;
   border-left: 4px solid #6c757d;
   color: #000;
   transition: transform 0.2s;
@@ -111,12 +111,12 @@ ul li:last-child {
 }
 
 .error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 0.75rem;
-  border: 1px solid #f5c6cb;
+  background-color: #fdecea;
+  color: #b71c1c;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #f5c2c7;
   border-radius: 4px;
-  margin-bottom: 0.5rem;
+  margin-left: 8px;
   font-family: "Courier New", monospace;
   font-size: 0.9rem;
 }
@@ -132,7 +132,7 @@ ul li:last-child {
 /* Responsive design */
 @media (max-width: 400px) {
   body {
-    padding: 5px;
+    padding: 10px;
   }
 
   header {
@@ -144,7 +144,7 @@ ul li:last-child {
   }
 
   section {
-    padding: 5px;
+    padding: 0.75rem;
   }
 }
 
@@ -160,7 +160,7 @@ code {
 
 /* Success indicator */
 .success {
-  color: #155724;
+  color: #084b18;
   background-color: #d4edda;
   border: 1px solid #c3e6cb;
   padding: 0.75rem;
