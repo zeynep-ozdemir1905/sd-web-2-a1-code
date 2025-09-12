@@ -19,7 +19,7 @@ const namesList = document.getElementById("names-list");
 users.forEach(user => {
   if (user.name) {
     console.log(user.name);
-    namesList.innerHTML += `<li>${user.name}</li>`;
+    namesList.innerHTML += `<li>ID: ${user.id} ${user.name}</li>`;
   }
 });
 
@@ -28,7 +28,7 @@ const youngList = document.getElementById("young-characters-list");
 users.forEach(user => {
   if (user.name && user.age < 40) {
     console.log(user.name);
-    youngList.innerHTML += `<li>${user.name}</li>`;
+    youngList.innerHTML += `<li>ID: ${user.id} ${user.name}</li>`;
 
   }
 });
@@ -37,7 +37,7 @@ function showNames(array, elementId) {
   const list = document.getElementById(elementId);
   array.forEach(user => {
     if (user.name) {
-      list.innerHTML += `<li>${user.name}</li>`;
+      list.innerHTML += `<li>ID: ${user.id} ${user.name}</li>`;
     }
   }); 
 }
@@ -46,9 +46,11 @@ showNames(users, "function-list");
 // 4. Create a function that takes an array and an age threshold parameter. The function should only display characters whose age is below the given number. Render results in the list with id "age-filter-list"
 function showNamesByAge(array, ageLimit, elementId) {
   const list = document.getElementById(elementId);
+  list.innerHTML = `Showing characters younger than ${ageLimit}`;
+
   array.forEach(user => {
      if (user.name && user.age < ageLimit) {
-      list.innerHTML += `<li>${user.name}</li>`;
+      list.innerHTML += `<li> ID:${user.id} ${user.name} (Age: ${user.age})</li>`;
     }
   });
     
@@ -89,21 +91,28 @@ const brokenDiv = document.getElementById("broken-array-errors");
 const brokenList = document.getElementById("broken-array-list");
 
 const brokenUsers = [
+  { id: 4, name: "Obi-Wan Kenobi", age: 57 },
+  { id: 3, name: "Princess Leia", age: 23 },
   { id: 1, age: 23 },
   { id: 2, name: null },
-  { id: 4, name: "Obi-Wan Kenobi", age: 57 },
-  { id: 3 },
+
 ];
 
 brokenUsers.forEach(user => {
-  let nameText = user.name ? user.name : "missing name properties"; 
-  let nameClass = user.name ? "success" : "error-message"; 
+  let nameText;
+  let nameClass = "";
+
+  if (!user.name) {
+    nameText = "missing name properties";
+    nameClass = "error-message"; 
+    console.error(`Error: Missing name for id ${user.id}`);
+  } else {
+    nameText = user.name; 
+  }
 
   brokenList.innerHTML += `
     <li>
       ID ${user.id}: <span class="${nameClass}">${nameText}</span>
     </li>
   `;
-
-  if (!user.name) console.error(`Error: Missing name for id ${user.id}`);
-});
+})
