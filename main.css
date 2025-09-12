@@ -8,58 +8,62 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
-  color: #333;
-  background-color: #f5f5f5;
+  color: black;
+  background-color: #fffdf5;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header styles */
 header {
-  background: #1e3799;
-  color: #fff;
+  background: linear-gradient(135deg, #FFB6C1 20%, #E6E6FA 80%);
+  color: black;
   padding: 2rem;
   border-radius: 3px;
   margin-bottom: 2rem;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 5px;
-  font-weight: 600;
+  font-weight: 600;  
 }
 
 header p {
   font-size: 1.1rem;
   margin-bottom: 5px;
+  color: black;
 }
 
 /* Main content */
 main {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 100%;
 }
 
 /* Section styles */
 section {
-  background: #e0e0e0;
-  margin-bottom: 1 rem;
+  background: lightgrey;
+  margin-bottom: 1rem;
   padding: 5px;
   border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  border-left: 2px solid #1e3799
+  box-shadow: 0 2px 4px black (255, 182, 193, 0.4);
+  border-left: 2px solid blue;
 }
 
 section h1 {
-  color: #222;
+  color: black;
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
 }
 
 section p {
-  color: #333333;
+  color: black;
   margin-bottom: 1rem;
   font-size: 1rem;
 }
@@ -67,7 +71,7 @@ section p {
 /* Output areas */
 .output {
   background-color: #f1f3f5;
-  border: 1px solid #dee2e6;
+  border: 1px solid black;
   border-radius: 6px;
   padding: 1rem;
   margin-top: 1rem;
@@ -86,12 +90,12 @@ ul {
 }
 
 ul li {
-  background: #f0f4f8;
+  background: lightgray;
   margin-bottom: 0.5rem;
   padding: 0.75rem;
   border-radius: px;
   border-left: 4px solid #6c757d;
-  color: #000;
+  color: black;
   transition: transform 0.2s;
 }
 
@@ -111,13 +115,14 @@ ul li:last-child {
 }
 
 .error-message {
-  background-color: #fdecea;
-  color: #b71c1c;
+  background-color: red;
+  color: white;
   padding: 0.6rem 0.75rem;
   border: 1px solid #f5c2c7;
   border-radius: 4px;
   margin-left: 8px;
-  font-family: "Courier New", monospace;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
   font-size: 0.9rem;
 }
 
@@ -160,8 +165,8 @@ code {
 
 /* Success indicator */
 .success {
-  color: #084b18;
-  background-color: #d4edda;
+  color: white;
+  background-color: green;
   border: 1px solid #c3e6cb;
   padding: 0.75rem;
   border-radius: 4px;
